@@ -1,0 +1,6 @@
+version: "1.0.1"
+services:
+  mywebsite:
+    image: magentovietnam/react-docker-jenkins:latest
+    ports:
+      - "8081:80"
