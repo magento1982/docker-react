@@ -4,4 +4,4 @@ COPY . /app
 RUN yarn install && yarn run build
 
 FROM nginx:latest
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
