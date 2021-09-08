@@ -1,4 +1,4 @@
-FROM node:lts-buster-slim
+FROM node:lts-buster-slim as builder
 WORKDIR /app
 COPY . /app
 RUN yarn install && yarn run build
