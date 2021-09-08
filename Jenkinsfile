@@ -14,7 +14,6 @@ pipeline {
             args '-u 0:0 -v /tmp:/root/.cache'
           }
       }
-
       steps {
         sh "npm install"
       }
