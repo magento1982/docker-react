@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-buster-slim
 WORKDIR /app
 COPY . /app
 RUN npm install && npm run build

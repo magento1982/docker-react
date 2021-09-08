@@ -10,7 +10,7 @@ pipeline {
     stage("Test") {
       agent {
           docker {
-            image 'node:alpine'
+            image 'node:lts-buster-slim'
             args '-u 0:0 -v /tmp:/root/.cache'
           }
       }
