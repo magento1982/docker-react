@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "magentovietnam/react-docker-jenkins"
+    DOCKER_IMAGE = "magentovietnam/docker-react"
   }
 
   stages {
