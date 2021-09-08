@@ -28,7 +28,7 @@ pipeline {
         sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
         sh "docker image ls | grep ${DOCKER_IMAGE}"
-        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'docker-hub', passwordVariable: '@@111111A*')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'nguyenvantri', passwordVariable: '@@111111*')]) {
             sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
             sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             sh "docker push ${DOCKER_IMAGE}:latest"
