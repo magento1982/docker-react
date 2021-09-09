@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "magentovietnam/docker-react"
+    DOCKER_IMAGE = "nguyenvantri1982/docker-react"
   }
 
   stages {
@@ -33,7 +33,7 @@ pipeline {
         }
         sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
-        
+
         // 
         script{
             if(GIT_BRANCH ==~ /.*master.*/){
