@@ -32,6 +32,7 @@ pipeline {
             sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
         }
         sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
+        sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
         sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
         // 
         script{
