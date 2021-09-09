@@ -27,8 +27,8 @@ pipeline {
       steps {
         
         // sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
-        sh "docker image ls | grep ${DOCKER_IMAGE}"
-        
+        //sh "docker image ls | grep ${DOCKER_IMAGE}"
+
         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
         }
@@ -45,8 +45,7 @@ pipeline {
         //clean to save disk
         sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
         //sh "docker image rm ${DOCKER_IMAGE}:latest"
-
-        //sh "docker run ${DOCKER_IMAGE}:latest"
+        sh "docker run ${DOCKER_IMAGE}:latest"
       }
     }
   }
