@@ -44,14 +44,15 @@ pipeline {
         }
         //clean to save disk
         sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
-        sh "docker image rm ${DOCKER_IMAGE}:latest"
+        //sh "docker image rm ${DOCKER_IMAGE}:latest"
         //sh "docker run ${DOCKER_IMAGE}:latest"
       }
     }
     stage("deploy") {
-      withCredentials([sshKey(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-            sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
-      }
+      // withCredentials([sshKey(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+      //       sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
+      // }
+      sh "docker run -d --name test-jenkins -p 8081:80 ${DOCKER_IMAGE}:latest"
     }
 
 
