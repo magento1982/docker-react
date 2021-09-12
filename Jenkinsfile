@@ -53,7 +53,7 @@ pipeline {
       //       sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
       // }
 
-      agent { node {label 'master'}}
+      // agent { node {label 'master'}}
       steps {
         sh "docker rm -f test-jenkins"
         sh "docker run -d --name test-jenkins -p 8081:80 ${DOCKER_IMAGE}:latest"
