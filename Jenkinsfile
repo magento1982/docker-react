@@ -50,11 +50,14 @@ pipeline {
     }
 
     stage("deploy") {
+
       agent { node {label 'master'}}
+
       steps{
         sh "docker rm -f test-jenkins"
         sh "docker run -d --name test-jenkins -p 8081:80 ${DOCKER_IMAGE}:latest"
       }
+      
     }
 
 
