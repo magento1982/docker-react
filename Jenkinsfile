@@ -36,7 +36,7 @@ pipeline {
         sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
         sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
         // 
-        
+
         script{
             if(GIT_BRANCH ==~ /.*master.*/){
                 sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
@@ -46,7 +46,7 @@ pipeline {
         //clean to save disk
         sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
         //sh "docker image rm ${DOCKER_IMAGE}:latest"
-        sh "docker run ${DOCKER_IMAGE}:latest"
+        //sh "docker run ${DOCKER_IMAGE}:latest"
       }
     }
   }
